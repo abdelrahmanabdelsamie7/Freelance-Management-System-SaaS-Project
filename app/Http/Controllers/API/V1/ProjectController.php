@@ -26,14 +26,14 @@ class ProjectController extends Controller
             return $this->error('Failed to fetch projects', $e->getMessage());
         }
     }
-    
+
     public function store(StoreProjectRequest $request)
     {
         try {
-            $project = $this->projectService->createProject($request->validated());
+            $project = $this->projectService->createProject($request->validated()); // -> Logic
             return $this->success($project, 'Project created successfully', 201);
         } catch (\Exception $e) {
-            return $this->error($e->getMessage());
+            return $this->error( "Failed to create", $e->getMessage());
         }
     }
 
@@ -88,7 +88,7 @@ class ProjectController extends Controller
             if (empty($term)) {
                 return $this->error('Search term is required');
             }
-            $filters = $request->only(['status', 'priority']);
+            $filters = $request->only(['status', 'priority','title']);
             $results = $this->projectService->searchProjects($term, $filters);
             return $this->paginated($results, [
                 'search_term' => $term,

@@ -26,4 +26,5 @@ class Project extends Model
         'deadline' => 'date',
         'budget' => 'decimal:2',
     ];
+    //
 }
