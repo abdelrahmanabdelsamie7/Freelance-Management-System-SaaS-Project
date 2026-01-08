@@ -13,6 +13,21 @@ return new class extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
+
+            $table->foreignid('project_id')->constrained()->cascadeOnDelete();
+            $table->foreignid('user_id')->constrained()->cascadeOnDelete();
+
+            $table->string('title');
+            $table->text('description')->nullable();
+
+            $table->enum('status', ['todo', 'in_progress', 'done'])->default('todo');
+
+            $table->date('due_date')->nullable();
+
+            $table->unsignedTinyInteger('contribution_percentage');
+
+            $table->softDeletes(); 
+            
             $table->timestamps();
         });
     }
