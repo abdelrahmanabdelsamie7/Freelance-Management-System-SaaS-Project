@@ -12,7 +12,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(
             ProjectRepositoryInterface::class,
-            ProjectRepository::class
+            ProjectRepository::class,
+        );
+
+        $this->app->bind(
+            TaskRepositoryInterface::class,
+            TaskRepository::class
         );
     }
 
