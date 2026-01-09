@@ -21,7 +21,7 @@ class ProjectRepository implements ProjectRepositoryInterface
 
     public function find(int $id): ?Project
     {
-        return $this->model->find($id);
+        return $this->model->find($id); // SELCET  * FROM `Projects` WHERE ID=
     }
 
     public function create(array $data): Project

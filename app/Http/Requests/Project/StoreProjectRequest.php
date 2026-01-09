@@ -21,7 +21,7 @@ class StoreProjectRequest extends FormRequest
             'start_date' => ['nullable', 'date'],
             'deadline' => ['nullable', 'date', 'after:start_date'],
             'budget' => ['nullable', 'numeric', 'min:0'],
-            'currency' => ['nullable', 'string', 'size:3'],
+            'currency' => ['nullable', 'string', 'size:3'], // EGP
         ];
     }
 }
